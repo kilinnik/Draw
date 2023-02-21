@@ -84,7 +84,7 @@ namespace лр1
                     y2 = (int)clickPoint.Y;
                     double angle1 = Math.Atan2(0, 100);
                     double angle2 = Math.Atan2(y2 - y1, x2 - x1);
-                    angle = (angle1 - angle2);
+                    angle = angle1 - angle2;
                     count++;
                 }
                 else
@@ -109,29 +109,11 @@ namespace лр1
             int dirY = y1 < y2 ? 1 : -1;
             int error = deltaX - deltaY;
 
-            Ellipse dot = new()
-            {
-                Width = 3,
-                Height = 3,
-                Fill = color
-            };
-
-            Canvas.SetLeft(dot, x2);
-            Canvas.SetTop(dot, y2);
-            myCanvas.Children.Add(dot);
+            SetPixel(x2, y2, color);
 
             while (x1 != x2 || y1 != y2)
             {
-                dot = new Ellipse
-                {
-                    Width = 3,
-                    Height = 3,
-                    Fill = color
-                };
-
-                Canvas.SetLeft(dot, x1);
-                Canvas.SetTop(dot, y1);
-                myCanvas.Children.Add(dot);
+               SetPixel(x1, y1, color);
 
                 int error2 = error * 2;
                 if (error2 > -deltaY)
